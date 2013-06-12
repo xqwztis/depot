@@ -43,7 +43,7 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_difference('LineItem.count', -1) do
       delete :destroy, id: @line_item
     end
-
-    assert_redirected_to line_items_path
+    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_equal flash[:notice], "Product removed from cart."
   end
 end
